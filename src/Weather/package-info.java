@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+/**
+ * @author Detmer
+ *
+ */
+package Weather;
