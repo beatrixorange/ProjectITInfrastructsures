@@ -1,7 +1,6 @@
 package Weather;
 
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -19,13 +18,11 @@ public class LineGraph extends JPanel {
 	public JFreeChart chart;
 
 	public LineGraph() {
-		// Create dataset
 		dataset = createDataset();
-		// Create chart
 		chart = ChartFactory.createLineChart(
-			"Average wind speed", // Chart title
-			"Day of the week", // X-Axis Label
-			"Windspeed", // Y-Axis Label
+			"Average wind speed", 
+			"Day of the week", 
+			"Windspeed", 
 			dataset
 			);
 

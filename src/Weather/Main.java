@@ -16,7 +16,7 @@ public class Main {
 	private LineGraph line;
 	private ChartPanel panel;
 	private ChartPanel panel2;
-	private JPanel x;
+	private JPanel graphManager;
 	
 	public Main() {
 		frame = new JFrame("Weather");
@@ -25,16 +25,16 @@ public class Main {
 		line = new LineGraph();
 		panel = new ChartPanel(line.chart);
 		panel2 = new ChartPanel(bar.chart);
-		x = new JPanel(new GridLayout(2,0));
-		x.add(panel2);
-		x.add(panel);
+		graphManager = new JPanel(new GridLayout(2,0));
+		graphManager.add(panel2);
+		graphManager.add(panel);
 		
 		frame.setSize(1280, 720);
 		frame.setResizable(true);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(tabs);
-		tabs.addTab("Nicaruaga", x);
+		tabs.addTab("Nicaruaga", graphManager);
 		tabs.addTab("Bolivia", null );
 		tabs.addTab("Suriname", null);
 		frame.setVisible(true);
@@ -44,7 +44,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Main();
+		new LoginPage();
 
 	}
 
