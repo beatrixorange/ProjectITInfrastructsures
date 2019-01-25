@@ -3,7 +3,12 @@ package Weather;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +22,6 @@ public class LoginPage extends JFrame implements ActionListener {
 	private JFrame loginPage;
 	
 	private JPanel gridManager;
-	private JLabel welcomeLabel;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
 	
@@ -27,8 +31,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	
 	
 	public LoginPage(){
-		loginPage = new JFrame("Login Page");
-		welcomeLabel = new JLabel("ECAMI Login Page");
+		loginPage = new JFrame("ECAMI Login Page");
 		
 		usernameLabel = new JLabel("Username");
 		passwordLabel = new JLabel("Password");
@@ -37,17 +40,28 @@ public class LoginPage extends JFrame implements ActionListener {
 		passwordField = new JPasswordField();
 		
 		loginButton = new JButton("Login");
-		gridManager = new JPanel(new GridLayout(10,0));
+		gridManager = new JPanel(null);
 		
-		gridManager.add(welcomeLabel);
+		usernameLabel.setBounds(10, 10, 80, 25);
 		gridManager.add(usernameLabel);
+		passwordLabel.setBounds(10, 40, 80, 25);
 		gridManager.add(passwordLabel);
+		usernameField.setBounds(100, 10, 160, 25);
 		gridManager.add(usernameField);
+		passwordField.setBounds(100, 40, 160, 25);
 		gridManager.add(passwordField);
+		loginButton.setBounds(10, 80 , 80, 25);
 		gridManager.add(loginButton);
 		loginPage.add(gridManager);
 		
-		loginPage.setSize(1280, 720);
+		loginButton.addActionListener(this);
+		
+	    ImageIcon img = new ImageIcon("./ECAMI.png");
+	    loginPage.setIconImage(img.getImage());
+	    
+		loginPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		loginPage.setSize(300, 150);
 		loginPage.setVisible(true);
 		
 		
@@ -55,9 +69,10 @@ public class LoginPage extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 		String username = usernameField.getText();
-		char[] password = passwordField.getPassword();
-	    if(username.equals("admin") && password.equals("123456")){
+		String password = passwordField.getText();
+	    if(username.equals("admin") && password.equals("password")){
 	      Main main = new Main();
+	      loginPage.setVisible(false);
 	    }
 	    else{
 	      JOptionPane.showMessageDialog(this,"Incorrect login or password",
