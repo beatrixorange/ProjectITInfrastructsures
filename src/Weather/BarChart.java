@@ -42,7 +42,7 @@ public class BarChart extends JPanel {
 		final String sunday = "Sunday";
 		final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		
-		dataset.addValue( 85, monday, monday);
+		dataset.addValue(85, monday, monday);
 		dataset.addValue(65, tuesday, tuesday);
 		dataset.addValue(35, wednesday, wednesday);
 		dataset.addValue(67, thursday, thursday);
