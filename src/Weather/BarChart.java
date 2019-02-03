@@ -9,6 +9,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYBarDataset;
 
 public class BarChart extends JPanel {
 
@@ -16,12 +17,15 @@ public class BarChart extends JPanel {
 	public ChartPanel panel;
 	public JFreeChart chart;
 	public Datareader values;
+	private String time;
+	private float cloudCoverage;
+	
 
 	public BarChart() {
 		values = new Datareader();
 		chart = ChartFactory.createBarChart(
 			"Cloud Coverage in percentages",
-			"Day of the week", 
+			"Time", 
 			"Coverage Percentage", 
 			createDataset(),
 			PlotOrientation.VERTICAL,
@@ -30,30 +34,27 @@ public class BarChart extends JPanel {
 		
 		panel = new ChartPanel(chart);
 	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-	    values.read();
 		
 	}
 	
-	private CategoryDataset createDataset() {
-		final String monday = "Monday";
-		final String tuesday = "Tuesday";
-		final String wednesday = "Wednesday";
-		final String thursday = "Thursday";
-		final String friday = "Friday";
-		final String saturday = "Saturday";
-		final String sunday = "Sunday";
-		final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	private DefaultCategoryDataset createDataset() {
 		
-		dataset.addValue(85, monday, monday);
-		dataset.addValue(65, tuesday, tuesday);
-		dataset.addValue(35, wednesday, wednesday);
-		dataset.addValue(67, thursday, thursday);
-		dataset.addValue(100, friday, friday);
-		dataset.addValue(15, saturday, saturday);
-		dataset.addValue(20, sunday, sunday);
-		
+		values.read();
+    	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
+
+			time = values.timeNic.get(i);
+			time.substring(0,time.length());
+			time = time.substring(1,time.length());
+			cloudCoverage = Float.parseFloat(values.cloudCoverageNic.get(i).substring(1,values.cloudCoverageNic.get(i).length()));
+			dataset.addValue(cloudCoverage,"1", time);
+	    }
+	    
 		return dataset;
+
 	}
+		
+	
 
 
 }

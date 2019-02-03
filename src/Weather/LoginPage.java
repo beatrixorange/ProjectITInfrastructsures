@@ -65,7 +65,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 	    if(username.equals("admin") && password.equals("password")){
-	      Main main = new Main();
+			new Thread(new Main()).start();
 	      loginPage.setVisible(false);
 	    }
 	    else{
@@ -73,4 +73,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	      "Error",JOptionPane.ERROR_MESSAGE); 
 	    }
 	  }
+	public static void main(String[] args) {
+		new LoginPage();
+	}
 }

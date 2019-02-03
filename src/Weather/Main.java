@@ -10,15 +10,15 @@ import javax.swing.JTabbedPane;
 import org.jfree.chart.ChartPanel;
 
 
-public class Main {
+public class Main implements Runnable{
 	private JFrame frame;
 	private JTabbedPane tabs;
 	private BarChart bar;
 	private LineGraph line;
-	private BarChart bar1;
-	private LineGraph line1;
-	private BarChart bar2;
-	private LineGraph line2;
+	private BarChartBol bar1;
+	private LineGraphBol line1;
+	private BarChartSur bar2;
+	private LineGraphSur line2;
 	private ChartPanel nicLine;
 	private ChartPanel nicBar;
 	private JPanel nicGraphManager;
@@ -40,16 +40,16 @@ public class Main {
 		nicGraphManager.add(nicLine);
 		nicGraphManager.add(nicBar);
 		
-		bar1 = new BarChart();
-		line1 = new LineGraph();
+		bar1 = new BarChartBol();
+		line1 = new LineGraphBol();
 		bolLine = new ChartPanel(line1.chart);
 		bolBar = new ChartPanel(bar1.chart);
 		bolGraphManager = new JPanel(new GridLayout(2,0));
 		bolGraphManager.add(bolLine);
 		bolGraphManager.add(bolBar);
 		
-		bar2 = new BarChart();
-		line2 = new LineGraph();
+		bar2 = new BarChartSur();
+		line2 = new LineGraphSur();
 		surLine = new ChartPanel(line2.chart);
 		surBar = new ChartPanel(bar2.chart);
 		surGraphManager = new JPanel(new GridLayout(2,0));
@@ -69,13 +69,23 @@ public class Main {
 	    frame.setIconImage(img.getImage());
 		
 		frame.setVisible(true);
+
 		
 		
 	}
+	public void updateView() {
+		nicGraphManager.updateUI();
+		bolGraphManager.updateUI();
+		surGraphManager.updateUI();
+	}
 
-	public static void main(String[] args) {
-		new LoginPage();
 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(true) {
+			updateView();
+		}
 	}
 
 }

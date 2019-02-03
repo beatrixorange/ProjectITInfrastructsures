@@ -16,14 +16,22 @@ public class Datareader {
 	private String stationSurS;
 	private String dateS;
 	private String timeS;
-	private ArrayList<String> windSpeed;
-	private ArrayList<String> cloudCoverage;
-	private ArrayList<String> stationNic;
-	private ArrayList<String> stationBol;
-	private ArrayList<String> stationSur;
-	private ArrayList<String> date;
-	private ArrayList<String> time;
-	private static Datareader x;
+	public ArrayList<String> stationNic;
+	public ArrayList<String> stationBol;
+	public ArrayList<String> stationSur;
+	public ArrayList<String> dateNic;
+	public ArrayList<String> timeNic;
+	public ArrayList<String> windSpeedNic;
+	public ArrayList<String> cloudCoverageNic;
+	public ArrayList<String> dateBol;
+	public ArrayList<String> timeBol;
+	public ArrayList<String> windSpeedBol;
+	public ArrayList<String> cloudCoverageBol;
+	public ArrayList<String> dateSur;
+	public ArrayList<String> timeSur;
+	public ArrayList<String> windSpeedSur;
+	public ArrayList<String> cloudCoverageSur;
+
 	
 	public Datareader() {
 		try {
@@ -34,10 +42,18 @@ public class Datareader {
 		stationNic = new ArrayList<String>();
 		stationBol = new ArrayList<String>();
 		stationSur = new ArrayList<String>();
-		date = new ArrayList<String>();
-		time = new ArrayList<String>();
-		windSpeed = new ArrayList<String>();
-		cloudCoverage = new ArrayList<String>();
+		dateNic = new ArrayList<String>();
+		timeNic = new ArrayList<String>();
+		windSpeedNic = new ArrayList<String>();
+		cloudCoverageNic = new ArrayList<String>();
+		dateBol = new ArrayList<String>();
+		timeBol = new ArrayList<String>();
+		windSpeedBol = new ArrayList<String>();
+		cloudCoverageBol = new ArrayList<String>();
+		dateSur = new ArrayList<String>();
+		timeSur = new ArrayList<String>();
+		windSpeedSur = new ArrayList<String>();
+		cloudCoverageSur = new ArrayList<String>();
 		stationNicS = "";
 		dateS = "";
 		timeS = "";
@@ -78,7 +94,7 @@ public class Datareader {
 						while(true) {
 							String c = line.charAt(i+1) + "";
 							if(c.equals(">")) {
-								date.add(dateS);
+								dateNic.add(dateS);
 								dateS = "";
 								break;
 							}
@@ -93,7 +109,7 @@ public class Datareader {
 						while(true) {
 							String c = line.charAt(i+1) + "";
 							if(c.equals(">")) {
-								time.add(timeS);
+								timeNic.add(timeS);
 								timeS = "";
 								break;
 							
@@ -110,7 +126,7 @@ public class Datareader {
 						while(true) {
 							String c = line.charAt(i+1) + "";
 							if(c.equals(">")) {
-								windSpeed.add(windSpeedS);
+								windSpeedNic.add(windSpeedS);
 								windSpeedS = "";
 								break;
 							
@@ -126,7 +142,163 @@ public class Datareader {
 						while(true) {
 							String c = line.charAt(i+1) + "";
 							if(c.equals(">")) {
-								cloudCoverage.add(cloudCoverageS);
+								cloudCoverageNic.add(cloudCoverageS);
+								cloudCoverageS = "";
+								break;
+							}
+							else {
+								cloudCoverageS = cloudCoverageS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("B") && b.equals("B")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								stationBol.add(stationBolS);
+								stationNicS = "";
+								break;
+							}
+							else {
+								stationNicS = stationNicS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("D") && b.equals("B")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								dateBol.add(dateS);
+								dateS = "";
+								break;
+							}
+							else {
+								dateS = dateS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("T") && b.equals("B")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								timeBol.add(timeS);
+								timeS = "";
+								break;
+							
+							}
+							else {
+								timeS = timeS + c;
+								i++;
+
+							}
+						}
+					}
+
+					if(a.equals("W") && b.equals("B")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								windSpeedBol.add(windSpeedS);
+								windSpeedS = "";
+								break;
+							
+							}
+							else {
+								windSpeedS = windSpeedS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("C") && b.equals("B")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								cloudCoverageBol.add(cloudCoverageS);
+								cloudCoverageS = "";
+								break;
+							}
+							else {
+								cloudCoverageS = cloudCoverageS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("N") && b.equals("S")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								stationSur.add(stationNicS);
+								stationNicS = "";
+								break;
+							}
+							else {
+								stationNicS = stationNicS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("D") && b.equals("S")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								dateSur.add(dateS);
+								dateS = "";
+								break;
+							}
+							else {
+								dateS = dateS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("T") && b.equals("S")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								timeSur.add(timeS);
+								timeS = "";
+								break;
+							
+							}
+							else {
+								timeS = timeS + c;
+								i++;
+
+							}
+						}
+					}
+
+					if(a.equals("W") && b.equals("S")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								windSpeedSur.add(windSpeedS);
+								windSpeedS = "";
+								break;
+							
+							}
+							else {
+								windSpeedS = windSpeedS + c;
+								i++;
+
+							}
+						}
+					}
+					if(a.equals("C") && b.equals("S")) {
+						while(true) {
+							String c = line.charAt(i+1) + "";
+							if(c.equals(">")) {
+								cloudCoverageSur.add(cloudCoverageS);
 								cloudCoverageS = "";
 								break;
 							}
@@ -142,15 +314,6 @@ public class Datareader {
 
 				
 			}
-			System.out.println(stationNic.size());
-			System.out.println(date.size());
-			System.out.println(time.size());
-			System.out.println(windSpeed.size());
-			System.out.println(cloudCoverage.size());
-
-
-
-			
 
                 
 		} catch (IOException e) {
@@ -159,8 +322,9 @@ public class Datareader {
 		}
 	}
 	public static void main(String[] args) {
-		x = new Datareader();
+		Datareader x = new Datareader();
 		x.read();
 	}
+
 
 }
