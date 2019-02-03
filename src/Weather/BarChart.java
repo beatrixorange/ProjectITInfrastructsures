@@ -15,8 +15,10 @@ public class BarChart extends JPanel {
 	public DefaultCategoryDataset dataset;
 	public ChartPanel panel;
 	public JFreeChart chart;
+	public Datareader values;
 
 	public BarChart() {
+		values = new Datareader();
 		chart = ChartFactory.createBarChart(
 			"Cloud Coverage in percentages",
 			"Day of the week", 
@@ -28,7 +30,7 @@ public class BarChart extends JPanel {
 		
 		panel = new ChartPanel(chart);
 	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-	    
+	    values.read();
 		
 	}
 	
