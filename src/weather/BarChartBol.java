@@ -1,62 +1,60 @@
-package Weather;
+package weather;
 
-import java.awt.Color;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.xy.XYBarDataset;
 
-public class LineGraphBol extends JFrame {
+public class BarChartBol extends JPanel {
 
+	public DefaultCategoryDataset dataset;
 	public ChartPanel panel;
 	public JFreeChart chart;
 	public Datareader values;
-	public String time;
-	public Float windSpeed;
+	private String time;
+	private float cloudCoverage;
+	
 
-	public LineGraphBol() {
+	public BarChartBol() {
 		values = new Datareader();
-		chart = ChartFactory.createLineChart(
-			"Windspeed", 
+		chart = ChartFactory.createBarChart(
+			"Cloud Coverage in percentages",
 			"Time", 
-			"Windspeed", 
+			"Coverage Percentage", 
 			createDataset(),
 			PlotOrientation.VERTICAL,
-			true,true,false		
-			);
+			true, true, false);
 
 		
 		panel = new ChartPanel(chart);
 	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-
 		
 	}
-
+	
 	private DefaultCategoryDataset createDataset() {
+		
 		values.read();
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
+	    for(int i = 0; i < values.stationBol.size(); i = i + 500) {
 
 			time = values.timeBol.get(i);
 			time.substring(0,time.length());
 			time = time.substring(1,time.length());
-			windSpeed = Float.parseFloat(values.windSpeedBol.get(i).substring(1,values.windSpeedBol.get(i).length()));
-			dataset.addValue(windSpeed,"1", time);
+			cloudCoverage = Float.parseFloat(values.cloudCoverageBol.get(i).substring(1,values.cloudCoverageBol.get(i).length()));
+			dataset.addValue(cloudCoverage,"1", time);
 	    }
 	    
 		return dataset;
 
 	}
+		
+	
+
+
 }
-
-

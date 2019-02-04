@@ -1,4 +1,4 @@
-package Weather;
+package weather;
 
 
 import javax.swing.JPanel;
@@ -11,7 +11,7 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYBarDataset;
 
-public class BarChartBol extends JPanel {
+public class BarChart extends JPanel {
 
 	public DefaultCategoryDataset dataset;
 	public ChartPanel panel;
@@ -21,7 +21,7 @@ public class BarChartBol extends JPanel {
 	private float cloudCoverage;
 	
 
-	public BarChartBol() {
+	public BarChart() {
 		values = new Datareader();
 		chart = ChartFactory.createBarChart(
 			"Cloud Coverage in percentages",
@@ -41,12 +41,12 @@ public class BarChartBol extends JPanel {
 		
 		values.read();
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	    for(int i = 0; i < values.stationBol.size(); i = i + 500) {
+	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
 
-			time = values.timeBol.get(i);
+			time = values.timeNic.get(i);
 			time.substring(0,time.length());
 			time = time.substring(1,time.length());
-			cloudCoverage = Float.parseFloat(values.cloudCoverageBol.get(i).substring(1,values.cloudCoverageBol.get(i).length()));
+			cloudCoverage = Float.parseFloat(values.cloudCoverageNic.get(i).substring(1,values.cloudCoverageNic.get(i).length()));
 			dataset.addValue(cloudCoverage,"1", time);
 	    }
 	    

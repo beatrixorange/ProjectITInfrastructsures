@@ -1,60 +1,62 @@
-package Weather;
+package weather;
 
+import java.awt.Color;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYBarDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
-public class BarChart extends JPanel {
+public class LineGraphBol extends JFrame {
 
-	public DefaultCategoryDataset dataset;
 	public ChartPanel panel;
 	public JFreeChart chart;
 	public Datareader values;
-	private String time;
-	private float cloudCoverage;
-	
+	public String time;
+	public Float windSpeed;
 
-	public BarChart() {
+	public LineGraphBol() {
 		values = new Datareader();
-		chart = ChartFactory.createBarChart(
-			"Cloud Coverage in percentages",
+		chart = ChartFactory.createLineChart(
+			"Windspeed", 
 			"Time", 
-			"Coverage Percentage", 
+			"Windspeed", 
 			createDataset(),
 			PlotOrientation.VERTICAL,
-			true, true, false);
+			true,true,false		
+			);
 
 		
 		panel = new ChartPanel(chart);
 	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+
 		
 	}
-	
+
 	private DefaultCategoryDataset createDataset() {
-		
 		values.read();
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
 
-			time = values.timeNic.get(i);
+			time = values.timeBol.get(i);
 			time.substring(0,time.length());
 			time = time.substring(1,time.length());
-			cloudCoverage = Float.parseFloat(values.cloudCoverageNic.get(i).substring(1,values.cloudCoverageNic.get(i).length()));
-			dataset.addValue(cloudCoverage,"1", time);
+			windSpeed = Float.parseFloat(values.windSpeedBol.get(i).substring(1,values.windSpeedBol.get(i).length()));
+			dataset.addValue(windSpeed,"1", time);
 	    }
 	    
 		return dataset;
 
 	}
-		
-	
-
-
 }
+
+

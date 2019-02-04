@@ -1,4 +1,4 @@
-package Weather;
+package weather;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
