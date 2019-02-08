@@ -25,19 +25,6 @@ public class LineGraphBol extends JFrame {
 	public Float windSpeed;
 
 	public LineGraphBol() {
-		values = new Datareader();
-		chart = ChartFactory.createLineChart(
-			"Windspeed", 
-			"Time", 
-			"Windspeed", 
-			createDataset(),
-			PlotOrientation.VERTICAL,
-			true,true,false		
-			);
-
-		
-		panel = new ChartPanel(chart);
-	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
 
 		
 	}
@@ -56,6 +43,22 @@ public class LineGraphBol extends JFrame {
 	    
 		return dataset;
 
+	}
+	
+	public void drawChart() {
+		values = new Datareader();
+		chart = ChartFactory.createLineChart(
+			"Windspeed", 
+			"Time", 
+			"Windspeed", 
+			createDataset(),
+			PlotOrientation.VERTICAL,
+			true,true,false		
+			);
+
+		
+		panel = new ChartPanel(chart);
+	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
 	}
 }
 

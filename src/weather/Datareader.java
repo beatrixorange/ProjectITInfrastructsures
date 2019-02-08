@@ -35,7 +35,7 @@ public class Datareader {
 	
 	public Datareader() {
 		try {
-			bin = new BufferedReader(new FileReader("file.xml"));
+			bin = new BufferedReader(new FileReader("received.xml"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

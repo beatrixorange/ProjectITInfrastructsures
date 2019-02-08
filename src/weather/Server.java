@@ -10,8 +10,8 @@ import java.net.Socket;
 
 public class Server {
 
-  public final static int SOCKET_PORT = 13267;  // you may change this
-  public final static String FILE_TO_SEND = "d:/file1.xml";  // you may change this
+  public final static int SOCKET_PORT = 3389;  // RDP port that is opened on the Azure VM.
+  public final static String FILE_TO_SEND = "/home/ITV2E01/backup/data/weather.xml";  // Directory on the Ubuntu VM
 
   public static void main (String [] args ) throws IOException {
     FileInputStream fis = null;

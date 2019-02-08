@@ -25,19 +25,6 @@ public class LineGraphSur extends JFrame {
 	public Float windSpeed;
 
 	public LineGraphSur() {
-		values = new Datareader();
-		chart = ChartFactory.createLineChart(
-			"Windspeed", 
-			"Time", 
-			"Windspeed", 
-			createDataset(),
-			PlotOrientation.VERTICAL,
-			true,true,false		
-			);
-
-		
-		panel = new ChartPanel(chart);
-	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
 
 		
 	}
@@ -58,5 +45,20 @@ public class LineGraphSur extends JFrame {
 
 	}
 	
+	public void drawChart() {
+		values = new Datareader();
+		chart = ChartFactory.createLineChart(
+			"Windspeed", 
+			"Time", 
+			"Windspeed", 
+			createDataset(),
+			PlotOrientation.VERTICAL,
+			true,true,false		
+			);
+
+		
+		panel = new ChartPanel(chart);
+	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+	}
 
 }

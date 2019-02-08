@@ -50,12 +50,28 @@ public class LineGraph extends JFrame {
 			time = values.timeNic.get(i);
 			time.substring(0,time.length());
 			time = time.substring(1,time.length());
-			windSpeed = Float.parseFloat(values.windSpeedNic.get(i).substring(1,values.windSpeedNic.get(i).length()));
+			windSpeed = Float.parseFloat(values.windSpeedNic.get(i).substring(2,values.windSpeedNic.get(i).length()));
 			dataset.addValue(windSpeed,"1", time);
 	    }
 	    
 		return dataset;
 
+	}
+	
+	public void drawChart() {
+		values = new Datareader();
+		chart = ChartFactory.createLineChart(
+			"Windspeed", 
+			"Time", 
+			"Windspeed", 
+			createDataset(),
+			PlotOrientation.VERTICAL,
+			true,true,false		
+			);
+
+		
+		panel = new ChartPanel(chart);
+	    panel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
 	}
 	
 
