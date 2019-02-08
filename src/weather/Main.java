@@ -39,6 +39,8 @@ public class Main implements Runnable, ActionListener {
 	private JButton refresh;
 	private JButton refresh1;
 	private JButton refresh2;
+	private Integer i;
+	private Integer y;
 	
 	public Main() {
 		
@@ -97,9 +99,9 @@ public class Main implements Runnable, ActionListener {
 	    frame.setIconImage(img.getImage());
 		
 		frame.setVisible(true);
-
-
 		
+		i = 0;
+		y = 0;
 		
 	}
 	public void updateView() {
@@ -148,7 +150,6 @@ public class Main implements Runnable, ActionListener {
 		nicGraphManager.updateUI();
 		bolGraphManager.updateUI();
 		surGraphManager.updateUI();
-		int i = 0;
 		i++;
 		if(i>1) {
 			nicGraphManager.remove(nicBar);
@@ -157,7 +158,6 @@ public class Main implements Runnable, ActionListener {
 			nicGraphManager.remove(nicLine);
 			bolGraphManager.remove(bolLine);
 			surGraphManager.remove(surLine);
-			int y = 0;
 			y++;
 			if(y>0) {
 				for(int u = 0; u < y; u++) {
