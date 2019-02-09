@@ -30,8 +30,9 @@ public class LineGraphSur extends JFrame {
 	}
 
 	private DefaultCategoryDataset createDataset() {
-		values.read();
+		values.read(); // refresh the arrays.
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    	//add the values to the graph
 	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
 
 			time = values.timeSur.get(i);

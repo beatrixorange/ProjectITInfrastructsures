@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Datareader {
 	private BufferedReader bin;
+	// temp strings needed to store the current value read.
 	private String line;
 	private String windSpeedS;
 	private String cloudCoverageS;
@@ -16,6 +17,7 @@ public class Datareader {
 	private String stationSurS;
 	private String dateS;
 	private String timeS;
+	// arrays to add all the values
 	public ArrayList<String> stationNic;
 	public ArrayList<String> stationBol;
 	public ArrayList<String> stationSur;
@@ -34,8 +36,9 @@ public class Datareader {
 
 	
 	public Datareader() {
+		// initializing all the array's and strings
 		try {
-			bin = new BufferedReader(new FileReader("received.xml"));
+			bin = new BufferedReader(new FileReader("received.xml"));//file to be read
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -66,25 +69,28 @@ public class Datareader {
 
 	
 	public void read() {
+		// function for reading the file that is written by the weather application
+		// the weather application uses a protocol written by Detmer to make it easier to retrieve the values
+		// the uncommented part functions almost the exact same as the commented part the only difference is that it checks for different stations
 		try {
 			line = bin.readLine();
 			for(int i = 0; i < line.length(); i++) {
-				String a;
+				String a;//needed to look for first character
 				if(i != line.length()-1) {
-					String b = line.charAt(i+1) + "";
+					String b = line.charAt(i+1) + "";//needed for the second character
 
 					//System.out.println(line.charAt(i));
 					a = line.charAt(i) + "";
-					if(a.equals("N") && b.equals("N")) {
+					if(a.equals("N") && b.equals("N")) {//checking if the station number is that of Nicuaraga
 						while(true) {
 							String c = line.charAt(i+1) + "";
-							if(c.equals(">")) {
-								stationNic.add(stationNicS);
-								stationNicS = "";
+							if(c.equals(">")) { //checking for the end of sequence character to signal that a new value is coming in
+								stationNic.add(stationNicS); // adding the station number to the arraylist
+								stationNicS = "";//emptying the string
 								break;
 							}
 							else {
-								stationNicS = stationNicS + c;
+								stationNicS = stationNicS + c; //adding the station number character for character to a string
 								i++;
 
 							}
@@ -321,10 +327,5 @@ public class Datareader {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		Datareader x = new Datareader();
-		x.read();
-	}
-
 
 }

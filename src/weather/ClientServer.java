@@ -16,7 +16,9 @@ public class ClientServer {
 
   public final static int FILE_SIZE = 6022386; //file size can be changed
   
+  
   public void connect() throws UnknownHostException, IOException {
+	  //receive file method
 	    int bytesRead;
 	    int current = 0;
 	    FileOutputStream fos = null;

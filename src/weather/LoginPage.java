@@ -25,6 +25,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	
 	
 	public LoginPage(){
+		//add all the necessary UI components.
 		loginPage = new JFrame("ECAMI Login Page");
 		
 		usernameLabel = new JLabel("Username");
@@ -36,6 +37,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		loginButton = new JButton("Login");
 		gridManager = new JPanel(null);
 		
+		//manage the UI components their position on the frame.
 		usernameLabel.setBounds(10, 10, 80, 25);
 		gridManager.add(usernameLabel);
 		passwordLabel.setBounds(10, 40, 80, 25);
@@ -64,6 +66,7 @@ public class LoginPage extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
+		//Todo change this to a SQL database with hashed passwords.
 	    if(username.equals("admin") && password.equals("password")){
 			new Thread(new Main()).start();
 	      loginPage.setVisible(false);

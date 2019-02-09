@@ -43,8 +43,8 @@ public class Main implements Runnable, ActionListener {
 	private Integer y;
 	
 	public Main() {
-		
-		dller = new ClientServer();
+		//add all the UI components
+		dller = new ClientServer();//the connection to the VM server object allows download of the xml file and refresh of graphs
 		frame = new JFrame("Weather");
 		tabs = new JTabbedPane();
 		bar = new BarChart();
@@ -95,15 +95,16 @@ public class Main implements Runnable, ActionListener {
 		tabs.addTab("Bolivia", bolGraphManager );
 		tabs.addTab("Suriname", surGraphManager);
 		
-	    ImageIcon img = new ImageIcon("./ECAMI.png");
+	    ImageIcon img = new ImageIcon("./ECAMI.png");//company logo icon.
 	    frame.setIconImage(img.getImage());
 		
 		frame.setVisible(true);
 		
-		i = 0;
-		y = 0;
+		i = 0;//necessary for the remove loop in the updateView method
+		y = 0;//necessary for the remove loop in the updateView method
 		
 	}
+	//remove graphs and add them again through
 	public void updateView() {
 		nicGraphManager.remove(nicBar);
 		bolGraphManager.remove(bolBar);
