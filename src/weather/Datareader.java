@@ -78,7 +78,7 @@ public class Datareader {
 			if(!f.equals(">")) {
 				line = line + ">";
 			}
-			for(int i = line.length()/2; i < line.length(); i++) {
+			for(int i = (int) (line.length()/1.4); i < line.length(); i++) {
 				String a;//needed to look for first character
 				if(i != line.length()-1) {
 					String b = line.charAt(i+1) + "";//needed for the second character
