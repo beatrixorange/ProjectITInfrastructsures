@@ -44,7 +44,17 @@ public class Main implements Runnable, ActionListener {
 	
 	public Main() {
 		//add all the UI components
-		dller = new ClientServer();//the connection to the VM server object allows download of the xml file and refresh of graphs
+		dller = new ClientServer();
+		try {
+			dller.connect();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//the connection to the VM server object allows download of the xml file and refresh of graphs
 		frame = new JFrame("Weather");
 		tabs = new JTabbedPane();
 		bar = new BarChart();
@@ -99,6 +109,16 @@ public class Main implements Runnable, ActionListener {
 	    frame.setIconImage(img.getImage());
 		
 		frame.setVisible(true);
+		
+		try {
+			dller.connect();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		i = 0;//necessary for the remove loop in the updateView method
 		y = 0;//necessary for the remove loop in the updateView method

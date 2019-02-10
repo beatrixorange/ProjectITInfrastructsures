@@ -32,7 +32,7 @@ public class LineGraphBol extends JFrame {
 	private DefaultCategoryDataset createDataset() {
 		values.read();
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
+	    for(int i = 0; i < values.stationNic.size(); i = i + 10000) {
 
 			time = values.timeBol.get(i);
 			time.substring(0,time.length());

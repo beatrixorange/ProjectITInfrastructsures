@@ -67,14 +67,18 @@ public class Datareader {
 	}
 	
 
-	
+	// TODO optimize the arrays currently the application is very slow when the file is big.
 	public void read() {
 		// function for reading the file that is written by the weather application
 		// the weather application uses a protocol written by Detmer to make it easier to retrieve the values
 		// the uncommented part functions almost the exact same as the commented part the only difference is that it checks for different stations
 		try {
 			line = bin.readLine();
-			for(int i = 0; i < line.length(); i++) {
+			String f = line.charAt(line.length()-1) + "";
+			if(!f.equals(">")) {
+				line = line + ">";
+			}
+			for(int i = line.length()/2; i < line.length(); i++) {
 				String a;//needed to look for first character
 				if(i != line.length()-1) {
 					String b = line.charAt(i+1) + "";//needed for the second character

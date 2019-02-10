@@ -30,7 +30,7 @@ public class BarChartBol extends JPanel {
 		
 		values.read();
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	    for(int i = 0; i < values.stationBol.size(); i = i + 500) {
+	    for(int i = 0; i < values.stationBol.size(); i = i + 10000) {
 
 			time = values.timeBol.get(i);
 			time.substring(0,time.length());

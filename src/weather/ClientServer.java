@@ -14,7 +14,7 @@ public class ClientServer {
   public final static String
        FILE_TO_RECEIVED = "received.xml";  //Directory to save xml file
 
-  public final static int FILE_SIZE = 6022386; //file size can be changed
+  public final static int FILE_SIZE = 602238666; //file size can be changed
   
   
   public void connect() throws UnknownHostException, IOException {

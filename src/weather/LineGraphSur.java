@@ -33,7 +33,7 @@ public class LineGraphSur extends JFrame {
 		values.read(); // refresh the arrays.
     	final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     	//add the values to the graph
-	    for(int i = 0; i < values.stationNic.size(); i = i + 500) {
+	    for(int i = 0; i < values.stationNic.size(); i = i + 10000) {
 
 			time = values.timeSur.get(i);
 			time.substring(0,time.length());
